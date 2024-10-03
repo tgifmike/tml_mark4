@@ -66,7 +66,7 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<NavBar />
-					<div className="container max-w-7xl mx-auto h-full pt-28">
+					<div className="container max-w-7xl mx-auto h-full pt-12">
 						{children}
 					</div>
 				</ThemeProvider>
