@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Head from "next/head";
+import NavBar from "@/components/NavBar/page";
+import { ThemeProvider } from "@/components/Theme/theme-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -57,9 +59,17 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen pt-20`}
 			>
-				<div className="container max-w-7xl mx-auto h-full pt-28">
-					{children}
-				</div>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					<NavBar />
+					<div className="container max-w-7xl mx-auto h-full pt-28">
+						{children}
+					</div>
+				</ThemeProvider>
 			</body>
 		</html>
 	);
