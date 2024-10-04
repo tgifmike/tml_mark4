@@ -1,8 +1,7 @@
-
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getBooks } from '@/lib/db-utilites';
+import { getMovies } from '@/lib/db-utilites';
 
 import {
 	Card,
@@ -14,32 +13,32 @@ import {
 } from '@/components/ui/card';
 import GoodReadExtender from '@/components/GoodRead/GoodReadExtender';
 
-const GoodReads = async () => {
-	const books = await getBooks();
+const GreatFlicks = async () => {
+	const movies = await getMovies();
 
 	return (
 		<main className="">
 			<h1 className="text-4xl capitalize font-mono px-8">good reads</h1>
 
 			<div className="grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3  gap-4 p-2">
-				{books.map((book) => (
+				{movies.map((movie) => (
 					<Card className="bg-accent">
 						<CardHeader className="p-2">
 							<CardTitle className="flex justify-center">
-								<p className="text-xl font-mono">{book.bookTitle}</p>
+								<p className="text-xl font-mono">{movie.movieTitle}</p>
 							</CardTitle>
 							<CardDescription></CardDescription>
 						</CardHeader>
 						<CardContent className="">
 							<div className="flex flex-row justify-between">
 								<div className="w-3/4">
-									<GoodReadExtender text={book.content} />
+									<GoodReadExtender text={movie.content} />
 								</div>
 								<div className="w-1/4">
-									{book.bookImage && (
+									{movie.movieImage && (
 										<Image
-											src={book.bookImage}
-											alt={book.bookImgaeAlt}
+											src={movie.movieImage}
+											alt={movie.movieImgaeAlt}
 											width={150}
 											height={75}
 											className="object-cover border-2 border-border"
@@ -50,7 +49,7 @@ const GoodReads = async () => {
 						</CardContent>
 						<CardFooter className="flex justify-center p-0">
 							<Link
-								href={book.url}
+								href={movie.url}
 								className="text-md underline underline-offset-2"
 							>
 								Check it out on Amazon!
@@ -63,4 +62,4 @@ const GoodReads = async () => {
 	);
 };
 
-export default GoodReads;
+export default GreatFlicks;

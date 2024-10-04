@@ -27,7 +27,7 @@
 		},
 		{
 			title: 'Great Flicks',
-			href: '/',
+			href: '/great-flicks',
 			description:
 				'Great movies involving restaurants, bars and retail establishments!',
 		},
