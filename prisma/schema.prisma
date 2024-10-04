@@ -1,0 +1,223 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String       @id @default(cuid())
+  name          String?
+  email         String?      @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  accounts      Account[]
+  comment       Comment[]
+  Like          Like[]
+  quizResults   QuizResult[]
+  Rating        Rating[]
+  sessions      Session[]
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Post {
+  id             String           @id @default(cuid())
+  title          String
+  slug           String           @unique
+  preview        String?
+  intro          String?
+  heading1       String?
+  content1       String[]
+  heading2       String?
+  content2       String[]
+  heading3       String?
+  content3       String[]
+  heading4       String?
+  content4       String[]
+  conclusion     String?
+  Headline1      String?
+  Headline2      String?
+  Headline3      String?
+  Headline4      String?
+  published      Boolean          @default(false)
+  image          String
+  imageAlt       String
+  image2         String?
+  imageAlt2      String?
+  image3         String?
+  imageAlt3      String?
+  postAuthor     String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  comments       Comment[]
+  Like           Like[]
+  authorName     Author           @relation(fields: [postAuthor], references: [authorName])
+  Rating         Rating[]
+  postCategories postCategories[]
+
+  @@index([title])
+}
+
+model Author {
+  id             String   @id @default(cuid())
+  authorName     String   @unique
+  authorImage    String
+  authorImgaeAlt String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  post           Post[]
+}
+
+model Comment {
+  id                 String   @id @default(cuid())
+  comment            String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  commentAuthorEmail String
+  postId             String
+  commentAuthor      User     @relation(fields: [commentAuthorEmail], references: [email])
+  Post               Post     @relation(fields: [postId], references: [id])
+}
+
+model Like {
+  userEmail String
+  postId    String
+  post      Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  email     User   @relation(fields: [userEmail], references: [email])
+
+  @@id([userEmail, postId])
+}
+
+model Rating {
+  userId String
+  postId String
+  rating String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@id([userId, postId])
+}
+
+model postCategories {
+  id           String   @id @default(cuid())
+  postCategory postCat  @relation(fields: [CatName], references: [name])
+  CatName      String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  postId       String
+  Post         Post     @relation(fields: [postId], references: [id])
+}
+
+model CategoriesOnQuiz {
+  // id        String   @id @default(cuid())
+  quizQuestion   quizQuestion @relation(fields: [quizQuestionId], references: [id])
+  quizQuestionId String
+  quizCategory   Category     @relation(fields: [categoryName], references: [name])
+  categoryName   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([quizQuestionId, categoryName])
+}
+
+model QuizResult {
+  id             String   @id @default(cuid())
+  quizCount      Int
+  quizScore      Int
+  correctAnswers Int
+  wrongAnswers   Int
+  missedAnswers  Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  userEmail      String   @unique
+
+  user User @relation(fields: [userEmail], references: [email])
+}
+
+model quizQuestion {
+  id            String             @id @default(cuid())
+  questionTitle String             @unique
+  answers       Answer[]
+  categories    CategoriesOnQuiz[]
+}
+
+model Category {
+  id            String             @id @default(cuid())
+  name          String             @unique
+  quizQuestions CategoriesOnQuiz[]
+}
+
+model postCat {
+  id             String           @id @default(cuid())
+  name           String           @unique
+  postCategories postCategories[]
+}
+
+model Answer {
+  id             String       @id @default(cuid())
+  description    String
+  isCorrect      Boolean      @default(false)
+  quizQuestionId String
+  quizQuestion   quizQuestion @relation(fields: [quizQuestionId], references: [id])
+}
+
+model Books {
+  id           String   @id @default(cuid())
+  bookTitle    String   @unique
+  bookImage    String
+  bookImgaeAlt String
+  url          String
+  content      String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Movies {
+  id            String   @id @default(cuid())
+  movieTitle    String   @unique
+  movieImage    String
+  movieImgaeAlt String
+  url           String
+  content       String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
