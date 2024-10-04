@@ -33,7 +33,7 @@
 		},
 		{
 			title: 'Good Reads',
-			href: '/',
+			href: '/good-reads',
 			description: 'Books that have been very helpful.',
 		},
 		{
