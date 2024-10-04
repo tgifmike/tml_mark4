@@ -1,13 +1,10 @@
 import { NextResponse } from 'next/server';
-import sgMail from '@sendgrid/mail';
-
-
-sgMail.setApiKey('process.env.SENDGRID_API_KEY');
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function POST(req: Request) {
 	console.log('Data', req.body);
 
-	//const { name, email, message } = await req.json();
 	const { values } = await req.json();
 	const { name, email, message } = values;
 
@@ -24,7 +21,7 @@ export async function POST(req: Request) {
 	};
 
 	try {
-		const emailResponse = await sgMail.send(msg).then((res) => {
+		const emailResponse = await sgMail.send(msg).then((res: any) => {
 			console.log(res[0].statusCode);
 			console.log(res[0].headers);
 		});

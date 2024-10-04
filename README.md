@@ -49,9 +49,21 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 
+
 Prisma 
 npm i -D prisma
 Prisma Client
 npm i @prisma/client
 itialze prisma
 npx prisma init
+
+SendGrid
+https://sendgrid.com/
+npm i @sendgrid/mail
+
+Shadcd/ui
+https://ui.shadcn.com/
+npx shadcn@latest init
+plus each component
+
+
