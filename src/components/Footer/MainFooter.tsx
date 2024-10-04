@@ -63,13 +63,13 @@ const MainFooter = () => {
 						<h6 className="text-md capialize">Contact</h6>
 					</Link>
 					<Link
-						href="/"
+						href="/privacy"
 						className={cn('', buttonVariants({ variant: 'ghost' }))}
 					>
 						<h6 className="text-md capialize">Privacy</h6>
 					</Link>
 					<Link
-						href="/"
+						href="/terms"
 						className={cn('', buttonVariants({ variant: 'ghost' }))}
 					>
 						<h6 className="text-md capialize">Terms & Conditions</h6>
