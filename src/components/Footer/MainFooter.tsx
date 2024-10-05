@@ -11,16 +11,18 @@ import { Separator } from '../ui/separator';
 
 const MainFooter = () => {
 	return (
-		<main className="bg-primary bottom-0 p-10 w-full max-w-7xl mx-auto">
+		<main className="bg-primary p-10 mt-auto">
 			<div className="p-4">
-				<h4 className="font-mono text-center text-accent text-xl">The Manager Life</h4>
+				<h4 className="font-mono text-center text-accent text-xl">
+					The Manager Life
+				</h4>
 			</div>
 
 			<div className="pb-4">
 				<Separator className="" />
 			</div>
 
-			<div className="flex flex-row justify-between text-accent">
+			<div className="flex flex-row justify-between text-accent max-w-7xl mx-auto">
 				<div className="flex flex-col items-start">
 					<h5 className="text-md uppercase">Content</h5>
 					<Link
