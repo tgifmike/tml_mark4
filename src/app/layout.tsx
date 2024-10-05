@@ -6,6 +6,10 @@ import NavBar from "@/components/NavBar/page";
 import { ThemeProvider } from "@/components/Theme/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import MainFooter from "@/components/Footer/MainFooter";
+import { Inter } from 'next/font/google';
+import { cn } from "@/lib/utils";
+import { Spicy_Rice } from 'next/font/google';
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,6 +21,19 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
+const inter = Inter({ subsets: ['latin'] });
+
+
+const spicy_rice = Spicy_Rice({
+	weight: ['400'],
+	style: ['normal'],
+	subsets: ['latin'],
+	variable: '--font-spicy_rice',
+});
+
+
+
 
 export const metadata: Metadata = {
 	title: 'The Manager Life',
@@ -54,12 +71,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-		<html lang="en">
+		<html lang="en" className={cn('antialiased', inter.className)}>
 			<Head>
 				<link rel="canonical" href="https://www.themanagerlife.com" />
 			</Head>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen pt-20`}
+				className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen pt-20`}
 			>
 				<ThemeProvider
 					attribute="class"
@@ -68,12 +85,12 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<NavBar />
-					<div className="container max-w-7xl mx-auto h-full pt-12">
+					<div className="container max-w-7xl mx-auto h-full pt-12 flex-grow">
 						{children}
 					</div>
 				</ThemeProvider>
-			  <Toaster />
-			  <MainFooter />
+				<Toaster />
+				<MainFooter />
 			</body>
 		</html>
 	);
