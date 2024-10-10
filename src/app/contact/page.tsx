@@ -45,7 +45,7 @@ const Contact = () => {
 	async function onSubmit(values: z.infer<typeof formSchema>) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		console.log(values);
+		
 		try {
 			const res = fetch('/api/contact', {
 				method: 'POST',
@@ -132,7 +132,7 @@ const Contact = () => {
 							<FormItem>
 								<FormLabel>Email</FormLabel>
 								<FormControl>
-									<Input placeholder="Dumbledore@Hogwarts.com" {...field} />
+									<Input placeholder="Dumbledore@Hogwarts.com" type='email' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

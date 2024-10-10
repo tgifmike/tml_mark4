@@ -27,25 +27,25 @@ const MainFooter = () => {
 					<h5 className="text-md uppercase">Content</h5>
 					<Link
 						href="/"
-						className={cn('', buttonVariants({ variant: 'ghost' }))}
+						className={cn('', buttonVariants())}
 					>
 						<h6 className="lext-md capialize">Blogs</h6>
 					</Link>
 					<Link
 						href="/good-reads"
-						className={cn('', buttonVariants({ variant: 'ghost' }))}
+						className={cn('', buttonVariants())}
 					>
 						<h6 className="lext-md capialize">Good Reads</h6>
 					</Link>
 					<Link
 						href="/great-flicks"
-						className={cn('', buttonVariants({ variant: 'ghost' }))}
+						className={cn('', buttonVariants())}
 					>
 						<h6 className="lext-md capialize">Great Flicks</h6>
 					</Link>
 					<Link
 						href="/"
-						className={cn('', buttonVariants({ variant: 'ghost' }))}
+						className={cn('', buttonVariants())}
 					>
 						<h6 className="lext-md capialize">Games</h6>
 					</Link>
@@ -54,47 +54,47 @@ const MainFooter = () => {
 					<h5 className="text-md uppercase">Resources</h5>
 					<Link
 						href="/about"
-						className={cn('', buttonVariants({ variant: 'ghost' }))}
+						className={cn('', buttonVariants())}
 					>
 						<h6 className="text-md capialize">About</h6>
 					</Link>
 					<Link
 						href="/contact"
-						className={cn('', buttonVariants({ variant: 'ghost' }))}
+						className={cn('', buttonVariants())}
 					>
 						<h6 className="text-md capialize">Contact</h6>
 					</Link>
 					<Link
 						href="/privacy"
-						className={cn('', buttonVariants({ variant: 'ghost' }))}
+						className={cn('', buttonVariants())}
 					>
 						<h6 className="text-md capialize">Privacy</h6>
 					</Link>
 					<Link
 						href="/terms"
-						className={cn('', buttonVariants({ variant: 'ghost' }))}
+						className={cn('', buttonVariants())}
 					>
 						<h6 className="text-md capialize">Terms & Conditions</h6>
 					</Link>
 				</div>
 				<div>
 					<h5 className="text-md uppercase">Socials</h5>
-					<div className="flex flex-col md:flex-row justify-between items-center">
+					<div className="flex flex-col md:flex-row justify-between items-center gap-2">
 						<Link
 							href="https://www.facebook.com/people/The-Manager-Life/61558173504955/"
-							className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+							className={buttonVariants({ size: 'icon' })}
 						>
 							<SlSocialFacebook className="text-xl" />
 						</Link>
 						<Link
 							href="https://www.linkedin.com/company/the-manager-life/about/?viewAsMember=true"
-							className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+							className={buttonVariants({ size: 'icon' })}
 						>
 							<SlSocialLinkedin className="text-xl" />
 						</Link>
 						<Link
 							href="https://twitter.com/themanagerlife"
-							className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+							className={buttonVariants({ size: 'icon' })}
 						>
 							<RiTwitterXLine className="text-xl" />
 						</Link>

@@ -36,20 +36,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Prisma 
 npm i -D prisma
 Prisma Client
@@ -66,4 +52,6 @@ https://ui.shadcn.com/
 npx shadcn@latest init
 plus each component
 
-
+next auth
+https://next-auth.js.org/
+npm install next-auth

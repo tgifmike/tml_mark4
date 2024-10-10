@@ -1,3 +1,5 @@
+import CommentForm from '@/components/Blog/CommentForm';
+import Comment from '@/components/Blog/Comment';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { getPost } from '@/lib/db-utilites';
 import { cn } from '@/lib/utils';
@@ -12,8 +14,6 @@ const spicy_rice = Spicy_Rice({
 	subsets: ['latin'],
 	variable: '--font-spicy_rice',
 });
-
-
 
 type Props = {
 	params: { blog: string };
@@ -53,23 +53,22 @@ export async function generateMetadata(
 export default async function Blog({ params }: Props) {
 	const slug = params.blog;
 	const post = await getPost(slug);
-	
-	
 
 	return (
 		<main className="w-full mx-auto h-full">
 			<div>
-				<h1 className="text-5xl capitalize font-mono font-semibold text-chart-4">
+				<h1 className="text-5xl capitalize font-mono font-semibold text-chart-4 p-4">
 					{post?.title}
 				</h1>
 			</div>
-			<div className="flex flex-col md:flex-row md:justify-between md:items-center">
-				<div className="py-2 md:w-1/2">
+			<div className="flex flex-col md:flex-row md:justify-between md:items-center p-4">
+				<div className="p-2 md:w-1/2">
 					{/* Author name and pic */}
 					<div className="flex flex-row items-center gap-4 py-2">
 						<Avatar>
 							<AvatarImage
-								src={`/${post?.authorName.authorImage}`}
+								src={`${post?.authorName.authorImage}`}
+								//src={post?.authorName.authorImage}
 								alt="Image of the Author"
 							/>
 							<AvatarFallback>
@@ -132,12 +131,12 @@ export default async function Blog({ params }: Props) {
 
 			{/* heading 1 */}
 			{post?.heading1 && (
-				<div className="py-6">
+				<div className="py-6 px-4">
 					<h2 className="text-4xl italic font-mono">{post?.heading1}</h2>
 				</div>
 			)}
 			{/* content 1 */}
-			<div className="text-xl text-left md:text-2xl md:text-justify">
+			<div className="text-xl text-left md:text-2xl md:text-justify p-2 md:p-4">
 				{post?.content1.map((content1, idx) => (
 					<div key={idx} className="">
 						<p className="">{content1}</p>
@@ -154,19 +153,19 @@ export default async function Blog({ params }: Props) {
 						alt={post?.imageAlt2}
 						width={500}
 						height={500}
-						className=" object-cover rounded-2xl shadow-2xl m-8 mx-auto md:float-left md:mr-4 max-h-96"
+						className=" object-cover rounded-2xl shadow-2xl  md:float-left m-4 max-h-96 "
 					/>
 				)}
 			</div>
 
 			{/* heading 2 */}
 			{post?.heading2 && (
-				<div className="py-6">
+				<div className="py-6 px-4">
 					<h2 className="text-4xl italic font-mono">{post?.heading2}</h2>
 				</div>
 			)}
 			{/* content 2 */}
-			<div className="text-xl text-left md:text-2xl md:text-justify">
+			<div className="text-xl text-left md:text-2xl md:text-justify p-2 md:p-4">
 				{post?.content2.map((content, idx) => (
 					<div key={idx} className="">
 						<p className="">{content}</p>
@@ -187,12 +186,12 @@ export default async function Blog({ params }: Props) {
 			)}
 			{/* heading 3 */}
 			{post?.heading3 && (
-				<div className="py-6">
+				<div className="py-6 px-4">
 					<h2 className="text-4xl italic font-mono">{post?.heading3}</h2>
 				</div>
 			)}
 			{/* content 3 */}
-			<div className="text-xl text-left md:text-2xl md:text-justify">
+			<div className="text-xl text-left md:text-2xl md:text-justify p-2 md:p-4">
 				{post?.content3.map((content, idx) => (
 					<div key={idx} className="">
 						<p className="">{content}</p>
@@ -221,19 +220,19 @@ export default async function Blog({ params }: Props) {
 						alt={post?.imageAlt3}
 						width={500}
 						height={500}
-						className=" object-cover rounded-2xl shadow-2xl m-8 mx-auto md:float-right md:ml-4"
+						className=" object-cover rounded-2xl shadow-2xl m-8 md:float-right"
 					/>
 				)}
 			</div>
 
 			{/* heading 4 */}
 			{post?.heading4 && (
-				<div className="py-6">
+				<div className="py-6 px-4">
 					<h2 className="text-4xl italic font-mono">{post?.heading4}</h2>
 				</div>
 			)}
 			{/* content 4 */}
-			<div className="text-xl text-left md:text-2xl md:text-justify">
+			<div className="text-xl text-left md:text-2xl md:text-justify p-2 md:p-4">
 				{post?.content4.map((content, idx) => (
 					<div key={idx} className="">
 						<p className="">{content}</p>
@@ -254,16 +253,22 @@ export default async function Blog({ params }: Props) {
 			)}
 
 			{/* conclution */}
-			<div className="text-xl text-left md:text-2xl md:text-justify indent-0 leading-normal tracking-normal m-0 break-after-all">
+			<div className="text-xl text-left md:text-2xl md:text-justify p-2 md:p-4">
 				{post?.conclusion && (
 					<div className="py-6">
 						<div className="py-4">
-							<p className="text-3xl italic font-mono">Conclusion</p>
+							<p className="text-3xl italic font-mono p-4">Conclusion</p>
 						</div>
 						<p className="">{post.conclusion}</p>
 						<br></br>
 					</div>
 				)}
+			</div>
+			<div>
+				<CommentForm postId={post?.id} />
+			</div>
+			<div>
+				<Comment postId={post?.id} />
 			</div>
 		</main>
 	);
