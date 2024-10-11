@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import PaginationControls from '@/components/Blog/PaginationControls';
-import { getPaginationPosts, getPosts } from '@/lib/db-utilites';
+import { getLikes, getPaginationPosts, getPosts } from '@/lib/db-utilites';
 import {
 	Card,
 	CardContent,
@@ -14,6 +14,7 @@ import GoodReadExtender from '@/components/GoodRead/GoodReadExtender';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { User2Icon } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
+import LikeButton from '@/components/Blog/LikeButton';
 
 export default async function allBlogs({
 	searchParams,
@@ -30,18 +31,17 @@ export default async function allBlogs({
 	const end = start + Number(per_page);
 	const totalPosts = fullListPost.length;
 
+
 	return (
 		<main className="">
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 p-2">
 				{posts.map((post) => (
 					<Card key={post.id} className="bg-accent flex flex-col">
-						<CardHeader className=''>
+						<CardHeader className="">
 							<CardTitle className="">
-								<div className='flex flex-col-reverse'>
-									<div className=''>
-										<p className='text-center text-xl'>
-											{post.title}
-										</p>
+								<div className="flex flex-col-reverse">
+									<div className="">
+										<p className="text-center text-xl">{post.title}</p>
 									</div>
 									<div>
 										{post.image && (
@@ -56,7 +56,6 @@ export default async function allBlogs({
 									</div>
 								</div>
 							</CardTitle>
-							
 						</CardHeader>
 						<CardContent>
 							<div>
@@ -98,6 +97,9 @@ export default async function allBlogs({
 									>
 										Read Full Blog Post
 									</Link>
+								</div>
+								<div>
+									{/* <LikeButton postId={post?.id} likes={likes} /> */}
 								</div>
 							</div>
 						</CardFooter>
