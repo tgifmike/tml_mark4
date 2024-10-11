@@ -21,9 +21,11 @@ const GoodReads = async () => {
 		<main className="">
 			<h1 className="text-4xl capitalize font-mono px-8">good reads</h1>
 
-			<div className="grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3  gap-4 p-2">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 p-2">
 				{books.map((book) => (
-					<Card className="bg-accent">
+					<Card
+						key={book.id}
+						className="bg-accent">
 						<CardHeader className="p-2">
 							<CardTitle className="flex justify-center">
 								<p className="text-xl font-mono">{book.bookTitle}</p>

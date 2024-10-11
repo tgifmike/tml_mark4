@@ -24,3 +24,33 @@ export async function getPost(slug: string) {
 	});
 	return post;
 }
+
+//get blogs
+export async function getPosts() {
+	const posts = await prisma.post.findMany({
+		include: {
+			authorName: true,
+		},
+		orderBy: {
+			createdAt: 'desc',
+		},
+	});
+	return posts;
+}
+
+//pagination function
+export async function getPaginationPosts(page: number, per_page: number) {
+	const skip: number = (page - 1) * per_page;
+
+	const posts = await prisma.post.findMany({
+		include: {
+			authorName: true,
+		},
+		orderBy: {
+			createdAt: 'desc',
+		},
+		take: per_page,
+		skip: skip,
+	});
+	return posts;
+}

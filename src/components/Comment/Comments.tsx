@@ -1,3 +1,4 @@
+
 import { FC } from 'react';
 import prisma from '@/lib/prisma';
 import { MessageCircleIcon, UserRound } from 'lucide-react';
@@ -6,6 +7,9 @@ import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 
 import Image from 'next/image';
 import { Avatar, AvatarFallback } from '../ui/avatar';
+
+
+import TimeSince from './TimeSince';
 
 interface CommentsProps {
 	postId: string | undefined;
@@ -21,8 +25,8 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
 	});
 
 	return (
-		<div className="w-full mx-auto p-4">
-			<div className="w-1/2 mx-auto">
+		<div className="w-full mx-auto p-2">
+			<div className="w-3/4 mx-auto">
 				<div className="flex justify-center p-2">
 					<h2 className="flex gap-2 text-xl items-center justify-center bg-accent w-1/4 p-2 rounded-full">
 						{' '}
@@ -30,9 +34,9 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
 					</h2>
 				</div>
 				<Separator className="" />
-				<div className="pt-4 ">
+				<div className="pt-4">
 					{comments?.map((comment) => (
-						<div className="flex py-1">
+						<div className="flex p-1">
 							<div className="flex items-center p-2">
 								<Avatar>
 									{comment.commentAuthor.image ? (
@@ -58,24 +62,25 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
 								</Avatar>
 							</div>
 							<Card className="w-full">
-								<CardHeader>
+								<CardHeader className="p-1">
 									<div className="">
 										<div className="flex justify-between items-center">
 											<div>
 												<p className="text-2xl">{comment.commentAuthor.name}</p>
-												<p className="text-sm italic">Says</p>
-											</div>
-											<div>
-												<p className="text-sm">
-													{comment.createdAt.toDateString()}
-												</p>
+												<p className="pl-4 text-sm italic">Said</p>
 											</div>
 										</div>
 									</div>
 								</CardHeader>
-								<CardContent className="px-12">
+								<CardContent className="px-12 py-1">
 									<p className="text-xl">{comment.comment}</p>
 								</CardContent>
+								<CardFooter className="flex justify-end p-1">
+									<p className="text-sm">
+										<TimeSince date={comment.createdAt} />
+										
+									</p>
+								</CardFooter>
 							</Card>
 						</div>
 					))}
