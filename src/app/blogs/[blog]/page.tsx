@@ -70,7 +70,7 @@ export default async function Blog({ params }: Props) {
 					<div className="flex flex-row items-center gap-4 py-2">
 						<Avatar>
 							<AvatarImage
-								src={`/${post?.authorName.authorImage}`}
+								src={post?.authorName.authorImage}
 								alt="Image of the Author"
 								className=""
 							/>

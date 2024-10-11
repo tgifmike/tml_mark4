@@ -23,7 +23,7 @@ const GoodReadExtender: FC<GoodReadExtenderProps> = ({ text }) => {
 					.replace('px', '');
 				const elLineCount = elHeight / parseInt(lineHeight, 10);
 
-				setShouldTruncate(elLineCount > 4);
+				setShouldTruncate(elLineCount > 3);
 			}
 		},
 		[text]
@@ -40,15 +40,23 @@ const GoodReadExtender: FC<GoodReadExtenderProps> = ({ text }) => {
 	}
 
 	return (
-		<div className='italic'>
+		<div className="italic">
 			<p
 				ref={measuredRef}
-				className={`${shouldClamp ? 'line-clamp-4' : 'line-clamp-none'}`}
+				className={`${shouldClamp ? 'line-clamp-3' : 'line-clamp-none'}`}
 			>
 				{text}
-				
 			</p>
-			<div className={buttonVariants({variant: 'outline'})}>{toggle}</div>
+			{/* <div className={buttonVariants({ variant: 'outline' })}>{toggle}</div> */}
+			<div
+				className={
+					shouldClamp
+						? buttonVariants({ variant: 'outline' })
+						: 'hidden'
+				}
+			>
+				{toggle}
+			</div>
 		</div>
 	);
 };

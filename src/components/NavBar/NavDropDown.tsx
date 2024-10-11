@@ -17,7 +17,7 @@
  const components: { title: string; href: string; description: string }[] = [
 		{
 			title: 'Blogs',
-			href: '/',
+			href: '/all-blogs',
 			description: 'Search for blogs by category or title.',
 		},
 		{
