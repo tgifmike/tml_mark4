@@ -67,11 +67,13 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+	children,
+	loginModal,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
+	loginModal: React.ReactNode;
 }>) {
-  return (
+	return (
 		<html lang="en" className={cn('antialiased', inter.className)}>
 			<Head>
 				<link rel="canonical" href="https://www.themanagerlife.com" />
@@ -87,6 +89,7 @@ export default function RootLayout({
 						disableTransitionOnChange
 					>
 						<NavBar />
+						{loginModal}
 						<div className="container max-w-7xl mx-auto h-full pt-12 flex-grow">
 							{children}
 						</div>
