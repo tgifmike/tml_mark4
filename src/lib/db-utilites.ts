@@ -54,3 +54,20 @@ export async function getPaginationPosts(page: number, per_page: number) {
 	});
 	return posts;
 }
+
+//get likes
+export async function getLikes(id: any) {
+	const likes = await prisma.post.findUnique({
+		where: {
+			id: id,
+		},
+		select: {
+			_count: {
+				select: {
+					Like: true,
+				},
+			},
+		},
+	});
+	return likes;
+}

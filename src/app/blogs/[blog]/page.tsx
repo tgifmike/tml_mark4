@@ -1,7 +1,8 @@
+import LikeButton from '@/components/Blog/LikeButton';
 import CommentForm from '@/components/Comment/CommentForm';
 import Comments from '@/components/Comment/Comments';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { getPost } from '@/lib/db-utilites';
+import { getLikes, getPost } from '@/lib/db-utilites';
 import { User2Icon } from 'lucide-react';
 import { Metadata, ResolvingMetadata } from 'next';
 import { Spicy_Rice } from 'next/font/google';
@@ -54,7 +55,7 @@ export async function generateMetadata(
 export default async function Blog({ params }: Props) {
 	const slug = params.blog;
 	const post = await getPost(slug);
-	
+	const likes: any = await getLikes(post?.id);
 	
 
 	return (
@@ -94,7 +95,7 @@ export default async function Blog({ params }: Props) {
 						</p>
 					</div>
 					{/* like button */}
-					<div>future like button</div>
+					<LikeButton postId={post?.id} likes={likes} />
 				</div>
 				<div className="md:w-1/2">
 					{post?.image && (
