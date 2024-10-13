@@ -1,4 +1,5 @@
 import LikeButton from '@/components/Blog/LikeButton';
+import Share from '@/components/Blog/Share';
 import CommentForm from '@/components/Comment/CommentForm';
 import Comments from '@/components/Comment/Comments';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -95,7 +96,14 @@ export default async function Blog({ params }: Props) {
 						</p>
 					</div>
 					{/* like button */}
-					<LikeButton postId={post?.id} likes={likes} />
+					<div>
+						<LikeButton postId={post?.id} likes={likes} />
+					</div>
+					
+					{/* share */}
+					<div>
+						<Share slug={post?.slug} title={post?.title} />
+					</div>
 				</div>
 				<div className="md:w-1/2">
 					{post?.image && (

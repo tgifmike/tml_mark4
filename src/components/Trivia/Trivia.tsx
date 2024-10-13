@@ -388,9 +388,9 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 							</p>
 							<Link
 								href="/login"
-								className={buttonVariants({ variant: 'outline' })}
+								className={buttonVariants({ variant: 'link' })}
 							>
-								Login
+								Sign In
 							</Link>
 						</div>
 					</div>
