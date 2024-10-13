@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import PaginationControls from '@/components/Blog/PaginationControls';
-import { getLikes, getPaginationPosts, getPosts } from '@/lib/db-utilites';
+import { getPaginationPosts, getPosts } from '@/lib/db-utilites';
 import {
 	Card,
 	CardContent,
-	CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
@@ -14,7 +13,7 @@ import GoodReadExtender from '@/components/GoodRead/GoodReadExtender';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { User2Icon } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
-import LikeButton from '@/components/Blog/LikeButton';
+
 
 export default async function allBlogs({
 	searchParams,
