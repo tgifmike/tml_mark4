@@ -71,3 +71,19 @@ export async function getLikes(id: any) {
 	});
 	return likes;
 }
+
+//quiz results
+export async function getResults() {
+	const results = await prisma.quizResult.findMany({
+		include: {
+			user: true,
+		},
+		orderBy: [
+			{
+				quizScore: 'desc',
+			},
+		],
+	})
+	return results;
+}
+

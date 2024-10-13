@@ -22,7 +22,7 @@
 		},
 		{
 			title: 'Games',
-			href: '/',
+			href: '/trivia',
 			description: 'Test Your knowlege.',
 		},
 		{
