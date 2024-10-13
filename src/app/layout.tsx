@@ -10,6 +10,12 @@ import { Inter } from 'next/font/google';
 import { cn } from "@/lib/utils";
 import { Spicy_Rice } from 'next/font/google';
 import { SessionProviderLib } from "@/lib/SessionProviderLib";
+import NextBreadcrumb from "@/components/BreadCrumbs/NextBreadCrumbs";
+import { RxHome } from "react-icons/rx";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
+import FacebookFollowMe from "@/components/FollowMe/FacebookFollowMe";
+import TwitterFollowMe from "@/components/FollowMe/TwitterFollowMe";
+import LinkedInFollowMe from "@/components/FollowMe/LinkedInFollowMe";
 
 
 const geistSans = localFont({
@@ -89,7 +95,27 @@ export default function RootLayout({
 						disableTransitionOnChange
 					>
 						<NavBar />
+
+						<div className="flex justify-between mt-2">
+							<NextBreadcrumb
+								homeElement={<RxHome className="text-xl md:text-2xl" />}
+								separator={<span> | </span>}
+								activeClasses="text-error hover:no-underline"
+								containerClasses="flex"
+								listClasses="hover:underline mx-2 font-bold"
+								capitalizeLinks
+							/>
+							<div className="flex pr-4 pt-10">
+								<span className="mt-1 mr-4 italic text-chart-1 text-md font-mono font-semibold">Follow Us on...</span>
+								<FacebookFollowMe />
+								<TwitterFollowMe />
+								<LinkedInFollowMe />
+							</div>
+						</div>
+						
+
 						{loginModal}
+
 						<div className="container max-w-7xl mx-auto h-full pt-12 flex-grow">
 							{children}
 						</div>

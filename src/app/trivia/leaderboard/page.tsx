@@ -58,8 +58,8 @@ export default async function LeaderBoard() {
 				<p className="text-sm">
 					Note: Trivia scores are only logged for users who have signed in.
 				</p>
-				<Link href="/login" className={buttonVariants({ variant: 'outline' })}>
-					Login
+				<Link href="/login" className={buttonVariants({ variant: 'link' })}>
+					Sign In
 				</Link>
 			</div>
 		</main>

@@ -5,8 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
 import { FaCrown } from 'react-icons/fa6';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/lib/auth';
 
-const Trivia = () => {
+const Trivia = async () => {
+    const session = await getServerSession(authOptions);
   return (
 		<main>
 			<div>
@@ -50,6 +53,19 @@ const Trivia = () => {
 							<FaCrown className="w-6 h-6 mr-2 text-yellow-500 mb-1" />
 							Check out the Leaderboard
 						</Link>
+					</div>
+
+					<div className="pt-10">
+						<p className="text-sm">
+							Note: Trivia scores are only logged for users who have signed in.
+                      </p>
+                      {session?.user ? null : (<Link
+							href="/login"
+							className={buttonVariants({ variant: 'link' })}
+						>
+							Sign In
+						</Link>)}
+						
 					</div>
 				</div>
 			</div>
