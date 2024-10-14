@@ -26,7 +26,7 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
 
 	return (
 		<div className="w-full mx-auto p-2">
-			<div className="w-3/4 mx-auto">
+			<div className="md:w-3/4 mx-auto">
 				<div className="flex justify-center p-2">
 					<h2 className="flex gap-2 text-xl items-center justify-center bg-accent w-1/4 p-2 rounded-full">
 						{' '}
@@ -67,7 +67,7 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
 										<div className="flex justify-between items-center">
 											<div>
 												<p className="text-2xl">{comment.commentAuthor.name}</p>
-												<p className="pl-4 text-sm italic">Said</p>
+												<p className="pl-4 text-sm italic opacity-75">Said</p>
 											</div>
 										</div>
 									</div>
@@ -76,7 +76,7 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
 									<p className="text-xl">{comment.comment}</p>
 								</CardContent>
 								<CardFooter className="flex justify-end p-1">
-									<p className="text-sm">
+									<p className="text-sm opacity-75">
 										<TimeSince date={comment.createdAt} />
 										
 									</p>

@@ -87,3 +87,16 @@ export async function getResults() {
 	return results;
 }
 
+//grab x latest blogs
+export async function getLatestPosts(x: number) {
+	const posts = await prisma.post.findMany({
+		include: {
+			authorName: true,
+		},
+		orderBy: {
+			createdAt: 'desc',
+		},
+		take: x,
+	});
+	return posts;
+}
