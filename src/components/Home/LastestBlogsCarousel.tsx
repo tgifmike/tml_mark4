@@ -22,7 +22,7 @@ interface componentProps {
 		href: string;
 		image: string;
 		imageAlt: string;
-	};
+	}[]
 }
 
 const LastestBlogsCarousel: FC<componentProps> = ({ components }) => {
