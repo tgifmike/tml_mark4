@@ -96,7 +96,7 @@ export default function RootLayout({
 					>
 						<NavBar />
 
-						<div className="flex justify-between mt-2">
+						<div className="flex flex-col md:flex-row md:justify-between mt-2">
 							<NextBreadcrumb
 								homeElement={<RxHome className="text-xl md:text-2xl" />}
 								separator={<span> | </span>}
@@ -105,7 +105,7 @@ export default function RootLayout({
 								listClasses="hover:underline mx-2 font-bold"
 								capitalizeLinks
 							/>
-							<div className="flex pr-4 pt-10">
+							<div className="flex pr-4 pt-4 md:pt-10">
 								<span className="mt-1 mr-4 italic text-chart-1 text-md font-mono font-semibold">Follow Us on...</span>
 								<FacebookFollowMe />
 								<TwitterFollowMe />

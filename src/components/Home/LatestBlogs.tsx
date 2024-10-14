@@ -10,7 +10,10 @@ export async function LatestBlogs() {
 		title: post.title,
 		href: `/blogs/${post.slug}`,
 		image: post.image,
-		imageAlt: post.imageAlt,
+        imageAlt: post.imageAlt,
+        authorImage: post.authorName.authorImage,
+        authorName: post.authorName.authorName,
+        created: post.createdAt,
 	}));
 	
 	return (

@@ -7,7 +7,7 @@ import { buttonVariants } from '../ui/button';
 const BlogGames = () => {
   return (
 		<main className=''>
-			<div className="flex flex-col md:flex-row md:gap-2 mx-auto md:m-2">
+			<div className="flex flex-col md:flex-row gap-1 md:gap-2 mx-auto m-1 md:m-2">
 				<div className="relative">
 					<Image
 						src="https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg?auto=compress&cs=tinysrgb&w=600"

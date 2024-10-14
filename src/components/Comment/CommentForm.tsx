@@ -122,7 +122,7 @@ const CommentForm: FC<FormCommentProps> = ({ postId }) => {
 
 	return (
 		<main className="w-full mx-auto p-4">
-			<div className="w-1/2 mx-auto">
+			<div className="md:w-1/2 mx-auto">
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}

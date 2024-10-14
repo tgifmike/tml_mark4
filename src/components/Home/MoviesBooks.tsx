@@ -7,7 +7,7 @@ import { buttonVariants } from '../ui/button';
 const MoviesBooks = () => {
 	return (
 		<main>
-			<div className="flex flex-col md:flex-row md:gap-2 mx-auto md:m-2">
+			<div className="flex flex-col md:flex-row gap-1 md:gap-2 mx-auto m-1 md:m-2">
 				<div className="relative">
 					<Image
 						src="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&w=600"

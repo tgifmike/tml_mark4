@@ -167,7 +167,7 @@ export default async function Blog({ params }: Props) {
 				))}
 			</div>
 			{/* image 2 */}
-			<div>
+			<div className=''>
 				{post?.image2 && (
 					<Image
 						src={post?.image2}
@@ -238,7 +238,7 @@ export default async function Blog({ params }: Props) {
 			)}
 
 			{/* image 3 */}
-			<div>
+			<div className=''>
 				{post?.image3 && (
 					<Image
 						src={post?.image3}
