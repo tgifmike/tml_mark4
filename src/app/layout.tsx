@@ -85,7 +85,7 @@ export default function RootLayout({
 				<link rel="canonical" href="https://www.themanagerlife.com" />
 			</Head>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen pt-20`}
+				className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col max-h-screen pt-20`}
 			>
 				<SessionProviderLib>
 					<ThemeProvider
@@ -116,7 +116,7 @@ export default function RootLayout({
 
 						{loginModal}
 
-						<div className="container max-w-7xl mx-auto h-full pt-12 flex-grow">
+						<div className="container max-w-7xl mx-auto h-full flex-grow">
 							{children}
 						</div>
 					</ThemeProvider>
