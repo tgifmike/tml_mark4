@@ -18,12 +18,12 @@
 		{
 			title: 'Blogs',
 			href: '/all-blogs',
-			description: 'Search for blogs by category or title.',
+			description: 'See all of our blogs here.',
 		},
 		{
 			title: 'Games',
-			href: '/trivia',
-			description: 'Test Your knowlege.',
+			href: '/games',
+			description: 'Looking to have some fun? Check out our games.',
 		},
 		{
 			title: 'Great Flicks',
@@ -34,12 +34,12 @@
 		{
 			title: 'Good Reads',
 			href: '/good-reads',
-			description: 'Books that have been very helpful.',
+			description: 'Some good reads that have helped me though out my career and life.',
 		},
 		{
 			title: 'About',
 			href: '/about',
-			description: 'About this blog',
+			description: 'About Us',
 		},
 		{
 			title: 'Contact Us',

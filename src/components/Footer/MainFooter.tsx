@@ -44,10 +44,16 @@ const MainFooter = () => {
 						<h6 className="lext-md capialize">Great Flicks</h6>
 					</Link>
 					<Link
-						href="/"
+						href="/trivia"
 						className={cn('', buttonVariants({ variant: 'ghost' }))}
 					>
-						<h6 className="lext-md capialize">Games</h6>
+						<h6 className="lext-md capialize">Trivia</h6>
+					</Link>
+					<Link
+						href="/lemonade-stand"
+						className={cn('', buttonVariants({ variant: 'ghost' }))}
+					>
+						<h6 className="lext-md capialize">Lemonade Stand</h6>
 					</Link>
 				</div>
 				<div className="flex flex-col items-start">
