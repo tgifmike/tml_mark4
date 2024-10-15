@@ -57,17 +57,40 @@ export default async function allBlogs({
 							</CardTitle>
 						</CardHeader>
 						<CardContent>
-							<div>
+							<div className='pb-2'>
 								<GoodReadExtender
 									//@ts-ignore
 									text={post.preview}
 								/>
 							</div>
+							<div className='flex flex-row pt-4'>
+								<div>
+									<Avatar>
+										<AvatarImage
+											src={post?.authorName.authorImage}
+											alt="Image of the Author"
+											className=""
+										/>
+										<AvatarFallback>
+											<User2Icon />
+										</AvatarFallback>
+									</Avatar>
+								</div>
+								<div className="ml-2">
+									<span className="text-sm">
+										Published on {'  '}
+										{post?.createdAt.toLocaleDateString('en-su', {
+											year: 'numeric',
+											month: 'long',
+										})}
+									</span>
+								</div>
+							</div>
 						</CardContent>
 						<CardFooter className="mt-auto">
 							<div className="flex justify-between align-bottom">
 								<div className="flex flex-col">
-									<div className="">
+									{/* <div className="">
 										<Avatar>
 											<AvatarImage
 												src={post?.authorName.authorImage}
@@ -87,7 +110,7 @@ export default async function allBlogs({
 												month: 'long',
 											})}
 										</span>
-									</div>
+									</div> */}
 								</div>
 								<div>
 									<Link
@@ -97,9 +120,14 @@ export default async function allBlogs({
 										Read Full Blog Post
 									</Link>
 								</div>
-								<div>
-									{/* <LikeButton postId={post?.id} likes={likes} /> */}
-								</div>
+								{/* <div>
+									<Link
+										className={buttonVariants()}
+										href={`/blogs/${post.slug}`}
+									>
+										Read Full Blog Post
+									</Link>
+								</div> */}
 							</div>
 						</CardFooter>
 					</Card>

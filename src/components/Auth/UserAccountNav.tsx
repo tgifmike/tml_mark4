@@ -11,6 +11,7 @@ import {
 	DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 import { UserAvatar } from './UserAvatar';
+import { LayoutDashboard, Settings } from 'lucide-react';
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
 	user: Pick<User, 'name' | 'image' | 'email'>;
@@ -38,7 +39,9 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
 				</div>
 				<DropdownMenuSeparator />
 				<DropdownMenuItem asChild>
-					<Link href="/dashboard">Dashboard</Link>
+					<Link href="/dashboard">
+						<LayoutDashboard size={20} className="mr-2" /> Dashboard
+					</Link>
 				</DropdownMenuItem>
 
 				{/* <DropdownMenuItem asChild>
@@ -46,7 +49,10 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
 				</DropdownMenuItem> */}
 
 				<DropdownMenuItem asChild>
-					<Link href="/settings">Settings</Link>
+					<Link href="/settings">
+						<Settings size={20} className='mr-2' />
+						Settings
+					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuSeparator />
 				<DropdownMenuItem

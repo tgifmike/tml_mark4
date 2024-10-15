@@ -17,8 +17,8 @@
  const components: { title: string; href: string; description: string }[] = [
 		{
 			title: 'Blogs',
-			href: '/all-blogs',
-			description: 'See all of our blogs here.',
+			href: '/blog-home',
+			description: 'See all of our blogs here. Search by category or by title.  You can also look a preview of each blog.',
 		},
 		{
 			title: 'Games',

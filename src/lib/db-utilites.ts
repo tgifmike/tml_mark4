@@ -100,3 +100,22 @@ export async function getLatestPosts(x: number) {
 	});
 	return posts;
 }
+
+//get blogs by cat
+export async function getCatPosts(catName: string) {
+	const posts = await prisma.post.findMany({
+		where: {
+			postCategories: {
+				some: {
+					CatName: {
+						contains: catName,
+					},
+				},
+			},
+		},
+		include: {
+			authorName: true,
+		},
+	});
+	return posts;
+}

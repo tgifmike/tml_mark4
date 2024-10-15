@@ -73,9 +73,12 @@ const LastestBlogsCarousel: FC<componentProps> = ({ components }) => {
 													)}
 												</Link>
 											</div>
-											<div className='flex'>
-												<div className="pt-10 flex flex-col align-bottom">
-													<div className="flex flex-row content-end items-center gap-2 flex-1">
+											
+										</div>
+									</CardContent>
+									<CardFooter>
+										<div className='mt-auto flex flex-col items-center'>
+											<div className="flex items-center pt-10 gap-3">
 														<Avatar>
 															<AvatarImage
 																src={component.authorImage}
@@ -98,9 +101,8 @@ const LastestBlogsCarousel: FC<componentProps> = ({ components }) => {
 														</span>
 													</div>
 												</div>
-											</div>
-										</div>
-									</CardContent>
+										
+									</CardFooter>
 								</Card>
 							</div>
 						</CarouselItem>

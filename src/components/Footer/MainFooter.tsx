@@ -26,7 +26,7 @@ const MainFooter = () => {
 				<div className="flex flex-col items-start">
 					<h5 className="text-md uppercase">Content</h5>
 					<Link
-						href="/"
+						href="/blog-home"
 						className={cn('', buttonVariants({ variant: 'ghost' }))}
 					>
 						<h6 className="lext-md capialize">Blogs</h6>
