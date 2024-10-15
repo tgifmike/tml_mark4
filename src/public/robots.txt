@@ -1,0 +1,7 @@
+rob# Block all crawlers for /dashboard /settings
+User-agent: *
+Disallow: /dashboard, /settings
+
+# Allow all crawlers
+User-agent: *
+Allow: /

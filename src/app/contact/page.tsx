@@ -103,7 +103,7 @@ const Contact = () => {
 	}
 
 	return (
-		<div className="w-1/2 mx-auto pt-8">
+		<div className="w-1/2 mx-auto pt-8 pb-6">
 			<h1 className="text-center text-4xl font-mono font-bold tracking-tight pb-4">
 				We want to hear from you!
 			</h1>
