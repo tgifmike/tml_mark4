@@ -55,7 +55,7 @@ const LastestBlogsCarousel: FC<componentProps> = ({ components }) => {
 									<CardContent className="flex flex-col items-center justify-center px-6 py-0">
 										<div className="flex flex-col h-full">
 											<div className="">
-												<p className="text-center text-chart-4 text-2xl font-semibold p-4">
+												<p className="text-center text-chart-4 text-xl font-semibold p-4">
 													{component.title}
 												</p>
 											</div>
@@ -73,34 +73,38 @@ const LastestBlogsCarousel: FC<componentProps> = ({ components }) => {
 													)}
 												</Link>
 											</div>
-											
 										</div>
 									</CardContent>
-									<CardFooter>
-										<div className='mt-auto flex flex-col items-center'>
-											<div className="flex items-center pt-10 gap-3">
-														<Avatar>
-															<AvatarImage
-																src={component.authorImage}
-																alt="Image of the Author"
-																className=""
-															/>
-															<AvatarFallback>
-																<User2Icon />
-															</AvatarFallback>
-														</Avatar>
-														<p>{component.authorName}</p>
-													</div>
-													<div className="pt-2">
-														<span className="text-sm">
-															Published on {'  '}
-															{component.created.toLocaleDateString('en-su', {
-																year: 'numeric',
-																month: 'long',
-															})}
-														</span>
-													</div>
+									<CardFooter className="mt-auto pt-2">
+										<div className="flex flex-col gap-2 ">
+											<div className='flex items-center gap-2'>
+												<div className=''>
+													<Avatar>
+														<AvatarImage
+															src={component.authorImage}
+															alt="Image of the Author"
+															className=""
+														/>
+														<AvatarFallback>
+															<User2Icon />
+														</AvatarFallback>
+													</Avatar>
 												</div>
+												<div>
+													<p className="ml-2">{component.authorName}</p>
+												</div>
+											</div>
+											<div>
+												<span className="pt-4 text-sm">
+													Published on {'  '}
+													{component.created.toLocaleDateString('en-su', {
+														year: 'numeric',
+														month: 'long',
+													})}
+												</span>
+											</div>
+										</div>
+
 										
 									</CardFooter>
 								</Card>
