@@ -2,6 +2,8 @@
 
 import { FC, useCallback, useState } from 'react';
 import { buttonVariants } from '../ui/button';
+import { cn } from '@/lib/utils';
+import { Divide } from 'lucide-react';
 
 interface GoodReadExtenderProps {
 	text: string;
@@ -47,16 +49,12 @@ const GoodReadExtender: FC<GoodReadExtenderProps> = ({ text }) => {
 			>
 				{text}
 			</p>
+
 			{/* <div className={buttonVariants({ variant: 'outline' })}>{toggle}</div> */}
-			<div
-				className={
-					shouldClamp
-						? buttonVariants({ variant: 'outline' })
-						: 'hidden'
-				}
-			>
-				{toggle}
-			</div>
+
+			{shouldClamp || readMore ? <div className={buttonVariants({ variant: 'outline' })}>{toggle}</div> : <div></div>}
+
+			
 		</div>
 	);
 };

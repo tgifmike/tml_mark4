@@ -29,7 +29,7 @@ const ResetGame = () => {
 		localStorage.removeItem('pitcherCount');
 		localStorage.removeItem('todaysTempLS');
 		localStorage.removeItem('totalProfit');
-		localStorage.removeItem('topProfitLS');
+		// localStorage.removeItem('topProfitLS');
 		localStorage.removeItem('totalCupsSoldLS');
 		window.location.reload();
 	}

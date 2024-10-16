@@ -31,12 +31,12 @@ const geistMono = localFont({
 const inter = Inter({ subsets: ['latin'] });
 
 
-const spicy_rice = Spicy_Rice({
-	weight: ['400'],
-	style: ['normal'],
-	subsets: ['latin'],
-	variable: '--font-spicy_rice',
-});
+// const spicy_rice = Spicy_Rice({ subsets: [
+// 	weight: ['400'],
+// 	style: ['normal'],
+// 	subsets: ['latin'],
+// 	variable: '--font-spicy_rice',]
+// });
 
 
 
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 		'Cost Controls',
 	],
 	icons: {
-		icon: '/newLogo.png',
+		icon: '/public/images/newLogo.png',
 	},
 	metadataBase: new URL('https://www.themanagerlife.com'),
 	alternates: {
