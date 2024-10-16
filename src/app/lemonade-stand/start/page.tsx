@@ -70,10 +70,10 @@ const Play = () => {
 	}, [condition]);
 
 	return (
-		<main className="bg-white mx-auto h-full md:w-full">
+		<main className="mx-auto  md:w-full">
 			{loading ? (
-				<div className="h-screen w-screen">
-					<div className="flex flex-col bg-slate-100">
+				<div className="h-screen flex justify-start align-top items-start">
+					<div className=" bg-slate-100">
 						<Lottie lottieRef={lemonRef} animationData={lemonJumpingRope} />
 					</div>
 				</div>
