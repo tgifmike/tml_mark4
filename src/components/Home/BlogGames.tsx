@@ -24,7 +24,7 @@ const BlogGames = () => {
 							buttonVariants({ variant: 'outline' }),
 							'rounded-full absolute bottom-8 left-20'
 						)}
-						href="/all-blogs"
+						href="/blog-home"
 					>
 						See our Blogs
 					</Link>
@@ -51,7 +51,7 @@ const BlogGames = () => {
 							buttonVariants({ variant: 'outline' }),
 							'rounded-full absolute top-40 right-6'
 						)}
-						href="/all-blogs"
+						href="/games"
 					>
 						Check out our Games
 					</Link>

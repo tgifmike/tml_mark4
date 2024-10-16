@@ -41,7 +41,7 @@ const ResetGame = () => {
 				variant={'destructive'}
 				size={'lg'}
 			>
-				Reset
+				Reset Game
 			</Button>
 		</main>
 	);

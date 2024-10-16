@@ -274,11 +274,10 @@ const Play = ({ setShowResults }: any) => {
 		<main>
 			<Button
 				onClick={() => playGame()}
-				className=""
+				className="px-9"
 				variant={'outline'}
 				size={'lg'}
-			>
-				Start Day {day}
+			>Start {day} Day
 			</Button>
 		</main>
 	);

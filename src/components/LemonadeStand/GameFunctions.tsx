@@ -1,6 +1,7 @@
 import React from 'react';
 import Play from './Play';
 import ResetGame from './ResetGame';
+import RulesModal from './RulesModal';
 
 const GameFunctions = (props: any) => {
 	let temp = props.temp;
@@ -10,9 +11,13 @@ const GameFunctions = (props: any) => {
 			<div className="flex pb-2 justify-center md:justify-start">
 				<h3 className="text-2xl md:text-4xl pb-2">Functions</h3>
 			</div>
-			<div className="flex flex-col gap-2">
-				<Play setShowResults={props.setShowResults} temp={props.temp} />
-				<ResetGame />
+			<div className="flex justify-between items-center w-full">
+				<div className="flex flex-col gap-2 ">
+					<Play setShowResults={props.setShowResults} temp={props.temp} />
+					<ResetGame />
+					<RulesModal />
+				</div>
+				
 			</div>
 		</main>
 	);
