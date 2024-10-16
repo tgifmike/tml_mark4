@@ -8,7 +8,6 @@ import { Toaster } from "@/components/ui/toaster";
 import MainFooter from "@/components/Footer/MainFooter";
 import { Inter } from 'next/font/google';
 import { cn } from "@/lib/utils";
-import { Spicy_Rice } from 'next/font/google';
 import { SessionProviderLib } from "@/lib/SessionProviderLib";
 import NextBreadcrumb from "@/components/BreadCrumbs/NextBreadCrumbs";
 import { RxHome } from "react-icons/rx";
@@ -16,6 +15,7 @@ import FacebookFollowMe from "@/components/FollowMe/FacebookFollowMe";
 import TwitterFollowMe from "@/components/FollowMe/TwitterFollowMe";
 import LinkedInFollowMe from "@/components/FollowMe/LinkedInFollowMe";
 import { Analytics } from '@vercel/analytics/react';
+import logo from '@/public/images/newLogo.png';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 		'Cost Controls',
 	],
 	icons: {
-		icon: '/public/images/newLogo.png',
+		icon: '@/public/images/newLogo.png'
 	},
 	metadataBase: new URL('https://www.themanagerlife.com'),
 	alternates: {
