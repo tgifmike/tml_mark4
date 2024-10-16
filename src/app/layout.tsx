@@ -12,11 +12,10 @@ import { Spicy_Rice } from 'next/font/google';
 import { SessionProviderLib } from "@/lib/SessionProviderLib";
 import NextBreadcrumb from "@/components/BreadCrumbs/NextBreadCrumbs";
 import { RxHome } from "react-icons/rx";
-import { Breadcrumb } from "@/components/ui/breadcrumb";
 import FacebookFollowMe from "@/components/FollowMe/FacebookFollowMe";
 import TwitterFollowMe from "@/components/FollowMe/TwitterFollowMe";
 import LinkedInFollowMe from "@/components/FollowMe/LinkedInFollowMe";
-
+import { Analytics } from '@vercel/analytics/react';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -120,6 +119,7 @@ export default function RootLayout({
 						<div className="container max-w-7xl mx-auto h-full flex-grow">
 							{children}
 						</div>
+						<Analytics />
 					</ThemeProvider>
 					<Toaster />
 					<MainFooter />
