@@ -9,7 +9,6 @@ import { ImCheckmark2 } from 'react-icons/im';
 import { LiaQuestionSolid } from 'react-icons/lia';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { Button, buttonVariants } from '../ui/button';
-import { ClipboardCheck, LogOut } from 'lucide-react';
 import { Progress } from '../ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
@@ -286,7 +285,7 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 											key={idx}
 											variant={'outline'}
 											onClick={() => onSelectedAnswer(answer, idx)}
-											className={selectedAnswerIndex === idx ? 'bg-accent' : ''}
+											className={selectedAnswerIndex === idx ? 'bg-chart-5 text-background hover:bg-chart-5 hover:text-background'  : ''}
 										>
 											{answer.description}
 										</Button>

@@ -147,7 +147,7 @@ const Recipe = (props: any) => {
 						<Button
 							className="text-xl"
 							variant={'ghost'}
-							onClick={decrementPricePerCup}
+							onClick={decrementLemonsPerPitcher}
 						>
 							<LuMinusCircle />
 						</Button>{' '}
@@ -155,7 +155,7 @@ const Recipe = (props: any) => {
 						<Button
 							className="text-xl"
 							variant={'ghost'}
-							onClick={incrementPricePerCup}
+							onClick={incrementLemonsPerPitcher}
 						>
 							<LuPlusCircle />
 						</Button>
@@ -175,7 +175,7 @@ const Recipe = (props: any) => {
 						<Button
 							className="text-xl"
 							variant={'ghost'}
-							onClick={decrementPricePerCup}
+							onClick={decrementSugarPerPitcher}
 						>
 							<LuMinusCircle />
 						</Button>{' '}
@@ -183,7 +183,7 @@ const Recipe = (props: any) => {
 						<Button
 							className="text-xl"
 							variant={'ghost'}
-							onClick={incrementPricePerCup}
+							onClick={incrementSugarPerPitcher}
 						>
 							<LuPlusCircle />
 						</Button>
@@ -203,7 +203,7 @@ const Recipe = (props: any) => {
 						<Button
 							className="text-xl"
 							variant={'ghost'}
-							onClick={decrementPricePerCup}
+							onClick={decrementIcePerCup}
 						>
 							<LuMinusCircle />
 						</Button>{' '}
@@ -211,7 +211,7 @@ const Recipe = (props: any) => {
 						<Button
 							className="text-xl"
 							variant={'ghost'}
-							onClick={incrementPricePerCup}
+							onClick={incrementIcePerCup}
 						>
 							<LuPlusCircle />
 						</Button>
