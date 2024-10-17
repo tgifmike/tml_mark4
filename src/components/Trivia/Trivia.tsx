@@ -372,16 +372,19 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 								Math.floor((results.score / (questions.length * 10)) * 100)
 							)}
 						</h4>
-						<div className="flex justify-center mb-20">
+						<div className="flex justify-center mb-20 gap-4">
 							<Button
 								onClick={() => window.location.reload()}
 								variant={'outline'}
 								className=""
 							>
-								Restart Quiz
-							</Button>
+								Restart Same Trivia
+								</Button>
+								<Link
+									className={buttonVariants()}
+									href='/trivia'>Trivia Home</Link>
 						</div>
-						<div className="pt-10">
+						<div className="pt-6">
 							<p className="text-sm">
 								Note: Trivia scores are only logged for users who have signed in.
 							</p>
@@ -389,7 +392,7 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 								href="/login"
 								className={buttonVariants({ variant: 'link' })}
 							>
-								Sign In
+								Sign In Here
 							</Link>
 						</div>
 					</div>
