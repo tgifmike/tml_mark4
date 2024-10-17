@@ -50,7 +50,7 @@ const frameworks = [
 		label: 'Restaurant Term Trivia',
 	},
 	{
-		value: '/trivia/mix-math-trivia',
+		value: '/trivia/mix-match-trivia',
 		label: 'Mix & Match Trivia',
 	},
 ];
