@@ -95,7 +95,7 @@ export default function RootLayout({
 					>
 						<NavBar />
 
-						<div className="container flex flex-col md:flex-row md:justify-between mt-10 max-w-7xl items-center mx-auto">
+						<div className="container flex flex-col md:flex-row md:justify-between max-w-7xl items-center mx-auto">
 							<NextBreadcrumb
 								homeElement={<RxHome className="text-xl md:text-2xl" />}
 								separator={<span> | </span>}
