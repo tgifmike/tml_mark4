@@ -57,13 +57,25 @@ export default async function allBlogs({
 							</CardTitle>
 						</CardHeader>
 						<CardContent>
-							<div className='pb-2'>
+							<div className="pb-2">
 								<GoodReadExtender
 									//@ts-ignore
 									text={post.preview}
 								/>
 							</div>
-							<div className='flex flex-row pt-4'>
+							<div className="flex flex-row pt-4">
+								<div>
+									<Link
+										className={buttonVariants()}
+										href={`/blogs/${post.slug}`}
+									>
+										Read Full Blog Post
+									</Link>
+								</div>
+							</div>
+						</CardContent>
+						<CardFooter className="mt-auto">
+							<div className='flex items-center gap-2'>
 								<div>
 									<Avatar>
 										<AvatarImage
@@ -78,7 +90,7 @@ export default async function allBlogs({
 								</div>
 								<div className="ml-2">
 									<span className="text-sm">
-										Published on {'  '}
+										Published  {'  '}
 										{post?.createdAt.toLocaleDateString('en-su', {
 											year: 'numeric',
 											month: 'long',
@@ -86,49 +98,8 @@ export default async function allBlogs({
 									</span>
 								</div>
 							</div>
-						</CardContent>
-						<CardFooter className="mt-auto">
-							<div className="flex justify-between align-bottom">
-								<div className="flex flex-col">
-									{/* <div className="">
-										<Avatar>
-											<AvatarImage
-												src={post?.authorName.authorImage}
-												alt="Image of the Author"
-												className=""
-											/>
-											<AvatarFallback>
-												<User2Icon />
-											</AvatarFallback>
-										</Avatar>
-									</div>
-									<div className="ml-2">
-										<span className="text-sm">
-											Published on {'  '}
-											{post?.createdAt.toLocaleDateString('en-su', {
-												year: 'numeric',
-												month: 'long',
-											})}
-										</span>
-									</div> */}
-								</div>
-								<div>
-									<Link
-										className={buttonVariants()}
-										href={`/blogs/${post.slug}`}
-									>
-										Read Full Blog Post
-									</Link>
-								</div>
-								{/* <div>
-									<Link
-										className={buttonVariants()}
-										href={`/blogs/${post.slug}`}
-									>
-										Read Full Blog Post
-									</Link>
-								</div> */}
-							</div>
+
+							
 						</CardFooter>
 					</Card>
 				))}

@@ -76,9 +76,9 @@ const LastestBlogsCarousel: FC<componentProps> = ({ components }) => {
 										</div>
 									</CardContent>
 									<CardFooter className="mt-auto pt-2">
-										<div className="flex flex-col gap-2 ">
-											<div className='flex items-center gap-2'>
-												<div className=''>
+										
+											<div className="flex items-center gap-2">
+												<div className="">
 													<Avatar>
 														<AvatarImage
 															src={component.authorImage}
@@ -91,21 +91,17 @@ const LastestBlogsCarousel: FC<componentProps> = ({ components }) => {
 													</Avatar>
 												</div>
 												<div>
-													<p className="ml-2">{component.authorName}</p>
+													<span className="pt-4 text-sm">
+														Published {'  '}
+														{component.created.toLocaleDateString('en-su', {
+															year: 'numeric',
+															month: 'long',
+														})}
+													</span>
 												</div>
+												
 											</div>
-											<div>
-												<span className="pt-4 text-sm">
-													Published on {'  '}
-													{component.created.toLocaleDateString('en-su', {
-														year: 'numeric',
-														month: 'long',
-													})}
-												</span>
-											</div>
-										</div>
-
-										
+									
 									</CardFooter>
 								</Card>
 							</div>

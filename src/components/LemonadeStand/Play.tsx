@@ -64,6 +64,7 @@ const Play = ({ setShowResults }: any) => {
 	let icePerCup = Number(iceInCup);
 	let availableFunds = Number(funds);
 	let dailySalesTotal = Number(dailySales);
+	let pricePerCup = Number(price);
 	let pitcherCount: number = 0;
 	const [pitcherMade, setPitcherMade] = useState(false);
 
@@ -142,9 +143,6 @@ const Play = ({ setShowResults }: any) => {
 
 	function getRecipeScore() {
 		let score = 0;
-		// let lemonsPerPitcher = Number(lemonsInPitcher);
-		// let sugarPerPitcher = Number(sugarInPitcher);
-		// let icePerCup = Number(iceInCup);
 
 		if (lemonsPerPitcher > 7 || lemonsPerPitcher < 4) {
 			score = score - 5;
@@ -163,6 +161,19 @@ const Play = ({ setShowResults }: any) => {
 		} else {
 			score = score + 5;
 		}
+
+		if (pricePerCup >= 2) {
+			score = score - 30;
+		} else if (pricePerCup >= 1.5) {
+			score = score -15	
+		} else if (pricePerCup >= 1) {
+			score = score -10
+		} else if (pricePerCup <= .5) {
+			score = score + 15
+		} else if (pricePerCup <= .25) {
+			score = score + 30
+		}
+		
 
 		return score;
 	}
