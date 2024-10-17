@@ -11,8 +11,8 @@ const BlogHome = ({ searchParams }: { searchParams?: { query?: string } }) => {
 
 	return (
 		<main>
-			<div className="flex flex-row justify-between p-4">
-				<div className="w-1/3 p-2">
+			<div className="flex flex-col md:flex-row justify-between p-4">
+				<div className="md:w-1/3 p-2">
 					<div className="flex gap-2">
 						<h2 className="text-4xl pb-4">Search By Category </h2>
 						
@@ -20,7 +20,7 @@ const BlogHome = ({ searchParams }: { searchParams?: { query?: string } }) => {
 					<BlogCatAccordion />
 				</div>
 
-				<div className="w-1/3 p-2">
+				<div className="md:w-1/3 p-2">
 					<p className="text-4xl pb-4">
 						To see a preview of all our blog posts
 					</p>
@@ -37,7 +37,7 @@ const BlogHome = ({ searchParams }: { searchParams?: { query?: string } }) => {
 						</Link>
 					</div>
 				</div>
-				<div className="w-1/3 p-2">
+				<div className="md:w-1/3 p-2">
 					<div className="flex gap-2">
 						<h2 className="text-4xl pb-4">Search By Title</h2>
 						<Search size={32} className="mt-1" />

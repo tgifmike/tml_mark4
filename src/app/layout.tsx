@@ -116,7 +116,7 @@ export default function RootLayout({
 
 						{loginModal}
 
-						<div className="container max-w-7xl mx-auto h-screen flex-grow">
+						<div className="container max-w-7xl mx-auto h-full flex flex-col">
 							{children}
 						</div>
 						<Analytics />
