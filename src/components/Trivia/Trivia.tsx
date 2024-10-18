@@ -12,7 +12,7 @@ import { Button, buttonVariants } from '../ui/button';
 import { Progress } from '../ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
-import { Check, X,  } from 'lucide-react';
+import { ArrowRight, BookCheck, Check, ClipboardCheck, LogOut, X,  } from 'lucide-react';
 
 
 
@@ -348,27 +348,38 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 									<Button
 										onClick={() => router.push('/trivia')}
 										variant={'destructive'}
-										className="w-1/4 mx-auto uppercase"
+										className="w-1/4 mx-auto uppercase flex gap-2 "
 									>
 										{/* <LogOut className="mr-2" /> */}
 										Exit
+										<LogOut />
 									</Button>
 									<Button
 										variant={'outline'}
-										className="w-1/4 mx-auto uppercase"
+										className="w-1/4 mx-auto uppercase flex gap-2"
 										disabled={!checked}
 										onClick={() => findCorrectAnswer()}
 									>
 										Check Answer
+										<BookCheck />
 									</Button>
 									<Button
 										onClick={nextQuestion}
 										disabled={!checked}
-										className="w-1/4 mx-auto uppercase"
+										className="w-1/4 mx-auto uppercase flex gap-2"
 									>
-										{activeQuestion === questions.length - 1
-											? 'Finish'
-											: 'Next'}
+										<div>
+											{activeQuestion === questions.length - 1
+												? 'Finish'
+												: 'Next'}
+										</div>
+										<div>
+											{activeQuestion === questions.length - 1 ? (
+												<ClipboardCheck />
+											) : (
+												<ArrowRight />
+											)}
+										</div>
 									</Button>
 								</div>
 							</div>
@@ -378,15 +389,13 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 									value={((activeQuestion + 1) / questions.length) * 100}
 								/>
 							</div>
-							
+
 							{showCorrect ? (
 								<div className="p-10 border-border border-2 bg-accent shadow-2xl rounded-2xl">
-									<div className='flex items-center gap-2'>
-										<div className='text-destructive'></div>
+									<div className="flex items-center gap-2">
+										<div className="text-destructive"></div>
 										{selectedAnswer === true ? checkIcon : crossIcon}
-										<p className="text-2xl  capitalize">
-											{answerMessage}
-										</p>
+										<p className="text-2xl  capitalize">{answerMessage}</p>
 									</div>
 									<div>
 										<p className="text-2xl text-destructive indent-24">
@@ -461,8 +470,8 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 							<Link className={buttonVariants()} href="/trivia">
 								Trivia Home
 							</Link>
-							</div>
-							
+						</div>
+
 						<div className="pt-6">
 							<p className="text-sm">
 								Note: Trivia scores are only logged for users who have signed
