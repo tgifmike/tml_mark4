@@ -12,6 +12,9 @@ import { Button, buttonVariants } from '../ui/button';
 import { Progress } from '../ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
+import { Check, X,  } from 'lucide-react';
+
+
 
 
 interface QuizProps {
@@ -39,6 +42,10 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 	);
 	const [selectedAnswer, setSelectedAnswer] = useState<boolean>(false);
 	const [checked, setChecked] = useState(false);
+	const [answerMessage, setAnswerMessage] = useState('');
+	const [showCorrect, setShowCorrect] = useState(false);
+	const [showCorrectMessage, setShowCorrectMessage] = useState('');
+	const [answerChecked, setAnswerChecked] = useState(false);
 	const [results, setResults] = useState({
 		score: 0,
 		correctAnswers: 0,
@@ -50,6 +57,10 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 	const [timerRunning, setTimerRunning] = useState(false);
 	const [key, setKey] = useState(0);
 	const [done, setDone] = useState(false);
+
+	let checkIcon = <Check size={36} strokeWidth={4} className='text-chart-2' />;
+	let crossIcon = <X size={36} strokeWidth={4} className='text-destructive'  />;
+	let icon: any = '';
 
 	//see which answer user selected
 	const onSelectedAnswer = (answers: any, idx: number) => {
@@ -81,12 +92,15 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 			stopTimer();
 			resetTimer();
 			startTimer();
+			setShowCorrect(false);
+			setAnswerChecked(false);
 		} else {
 			stopTimer();
 			setShowResults(true);
 			setActiveQuestion(0);
 			setDone(true);
 			stopTimer();
+			setShowCorrect(false);
 		}
 
 		setChecked(false);
@@ -117,7 +131,7 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 					return response.json();
 				})
 				.then((data) => {
-					console.log('Quiz results saved successfully:', data);
+					//console.log('Quiz results saved successfully:', data);
 					toast({
 						title: 'Success',
 						description: (
@@ -128,11 +142,9 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 						),
 						variant: 'default',
 					});
-					
 				})
 				.catch((error) => {
 					console.error('Error saving quiz results:', error);
-					
 				});
 		}
 	}, [done]);
@@ -189,8 +201,13 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 				  }
 				: {}
 		);
-		nextQuestion();
-		startTimer();
+		if (activeQuestion < questions.length - 1) {
+			nextQuestion();
+			startTimer();
+		} else {
+			nextQuestion();
+			stopTimer();
+		}
 	};
 
 	//circle timer text
@@ -235,6 +252,36 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 			stopTimer();
 		};
 	}, []);
+
+
+
+	function findCorrectAnswer() {
+		let questionArray = questions[activeQuestion].answers.filter((answer) => {
+			return answer.isCorrect === true;
+		});
+
+		setShowCorrect(true);
+		setAnswerChecked(true);
+
+		//console.log(correctAnswer)
+
+		if (selectedAnswer == true) {
+			setAnswerMessage('Congrats Your Answer is Correct!');
+			icon = checkIcon;
+		} else if (selectedAnswer === false) {
+			setAnswerMessage(
+				'Sorry Your Answer is incorrect, the correct response was:');
+			icon = crossIcon;
+			
+		}
+
+		setShowCorrectMessage(questionArray[0].description);
+
+		
+	}
+
+	
+	
 
 	return (
 		<main className="max-w-[1500px] mx-auto w-full h-screen">
@@ -283,29 +330,41 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 									{questions[activeQuestion].answers.map((answer, idx) => (
 										<Button
 											key={idx}
+											disabled={answerChecked}
 											variant={'outline'}
 											onClick={() => onSelectedAnswer(answer, idx)}
-											className={selectedAnswerIndex === idx ? 'bg-chart-5 text-background hover:bg-chart-5 hover:text-background'  : ''}
+											className={
+												selectedAnswerIndex === idx
+													? 'bg-chart-5 text-background hover:bg-chart-5 hover:text-background'
+													: ''
+											}
 										>
 											{answer.description}
 										</Button>
 									))}
 								</div>
 								{/* show next/finsh and exit buton */}
-								<div className="">
+								<div className="flex gap-2">
 									<Button
 										onClick={() => router.push('/trivia')}
 										variant={'destructive'}
-										className="w-1/2 mx-auto"
+										className="w-1/4 mx-auto uppercase"
 									>
 										{/* <LogOut className="mr-2" /> */}
 										Exit
 									</Button>
-
+									<Button
+										variant={'outline'}
+										className="w-1/4 mx-auto uppercase"
+										disabled={!checked}
+										onClick={() => findCorrectAnswer()}
+									>
+										Check Answer
+									</Button>
 									<Button
 										onClick={nextQuestion}
 										disabled={!checked}
-										className="w-1/2 mx-auto uppercase"
+										className="w-1/4 mx-auto uppercase"
 									>
 										{activeQuestion === questions.length - 1
 											? 'Finish'
@@ -314,11 +373,30 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 								</div>
 							</div>
 							{/* show progress */}
-							<div className="pt-6">
+							<div className="py-6 ">
 								<Progress
 									value={((activeQuestion + 1) / questions.length) * 100}
 								/>
 							</div>
+							
+							{showCorrect ? (
+								<div className="p-10 border-border border-2 bg-accent shadow-2xl rounded-2xl">
+									<div className='flex items-center gap-2'>
+										<div className='text-destructive'></div>
+										{selectedAnswer === true ? checkIcon : crossIcon}
+										<p className="text-2xl  capitalize">
+											{answerMessage}
+										</p>
+									</div>
+									<div>
+										<p className="text-2xl text-destructive indent-24">
+											{selectedAnswer === false ? showCorrectMessage : null}
+										</p>
+									</div>
+								</div>
+							) : (
+								<div></div>
+							)}
 						</div>
 					</div>
 				) : (
@@ -335,7 +413,7 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 								Total Score: <span>{results.score}</span>
 							</h4>
 						</div>
-						<div className="w-1/2 mx-auto border-border border-2 p-7 rounded-2xl shadow-2xl">
+						<div className="md:w-1/2 mx-auto border-border border-2 p-7 rounded-2xl shadow-2xl">
 							<h3 className="text-3xl text-center">Stats</h3>
 							<div className="flex justify-between p-1">
 								<div>Total Questions</div>
@@ -379,14 +457,16 @@ const Trivia = ({ questions, triviaTitle }: QuizProps) => {
 								className=""
 							>
 								Restart Same Trivia
-								</Button>
-								<Link
-									className={buttonVariants()}
-									href='/trivia'>Trivia Home</Link>
-						</div>
+							</Button>
+							<Link className={buttonVariants()} href="/trivia">
+								Trivia Home
+							</Link>
+							</div>
+							
 						<div className="pt-6">
 							<p className="text-sm">
-								Note: Trivia scores are only logged for users who have signed in.
+								Note: Trivia scores are only logged for users who have signed
+								in.
 							</p>
 							<Link
 								href="/login"
