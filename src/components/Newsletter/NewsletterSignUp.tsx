@@ -14,30 +14,25 @@ import {
 	FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { MailCheck, MailQuestion, MailX } from 'lucide-react';
 
-const Contact = () => {
+const NewsletterSignUp = () => {
 	const { toast } = useToast();
 
 	const formSchema = z.object({
-		name: z.string().min(3, {
-			message: 'Username must be at least 3 characters.',
-		}),
+		
 		email: z.string().email({ message: 'Invalid email address' }),
-		message: z.string().min(10, {
-			message: 'Message must be at least 10 characters.',
-		}),
+		
 	});
 
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			name: '',
+			
 			email: '',
-			message: '',
+			
 		},
 	});
 
@@ -45,9 +40,9 @@ const Contact = () => {
 	async function onSubmit(values: z.infer<typeof formSchema>) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		console.log(values);
+		//console.log(values);
 		try {
-			const res = fetch('/api/contact', {
+			const res = fetch('/api/newsletter', {
 				method: 'POST',
 				body: JSON.stringify({
 					values,
@@ -102,68 +97,51 @@ const Contact = () => {
 		}
 	}
 
-	return (
-		<div className="w-1/2 mx-auto pt-8 pb-6">
-			<h1 className="text-center text-4xl font-mono font-bold tracking-tight pb-4">
-				We want to hear from you!
-			</h1>
-			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-					<FormField
-						control={form.control}
-						name="name"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Name</FormLabel>
-								<FormControl>
-									<Input
-										placeholder="Albus Percival Wulfric Brian Dumbledore"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="email"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Email</FormLabel>
-								<FormControl>
-									<Input
-										
-										placeholder="Dumbledore@Hogwarts.com"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="message"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Message</FormLabel>
-								<FormControl>
-									<Textarea
-										placeholder="Drop us a line..."
-										className="resize-none"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<Button type="submit">Submit</Button>
-				</form>
-			</Form>
-		</div>
-	);
+    return (
+			<main className='p-8'>
+				<div className="w-1/2 mx-auto p-10 border-border border-1 rounded-2xl shadow-2xl bg-accent">
+					<h2 className="text-center text-4xl font-mono font-bold tracking-tight pb-4">
+						Join our Newsletter
+					</h2>
+					<p className="text-center text-lg">
+						Be the first to see new content!
+					</p>
+					<Form {...form}>
+						<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+							<FormField
+								control={form.control}
+								name="email"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Email</FormLabel>
+										<FormControl>
+											<Input
+												placeholder="Dumbledore@Hogwarts.com"
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<div className="flex flex-col items-end">
+								<p className="text-sm italic">
+									No Spam, we are not fans either!
+								</p>
+								<Button
+									type="submit"
+									className="px-6"
+									variant={'outline'}
+									size={'lg'}
+								>
+									Join
+								</Button>
+							</div>
+						</form>
+					</Form>
+				</div>
+			</main>
+		);
 };
 
-export default Contact;
+export default NewsletterSignUp;
