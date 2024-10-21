@@ -15,7 +15,7 @@ import FacebookFollowMe from "@/components/FollowMe/FacebookFollowMe";
 import TwitterFollowMe from "@/components/FollowMe/TwitterFollowMe";
 import LinkedInFollowMe from "@/components/FollowMe/LinkedInFollowMe";
 import { Analytics } from '@vercel/analytics/react';
-import logo from '@/public/images/newLogo.png';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -120,6 +120,7 @@ export default function RootLayout({
 							{children}
 						</div>
 						<Analytics />
+						<GoogleAnalytics gaId="G-H2GXG2GKK0" />
 					</ThemeProvider>
 					<Toaster />
 					<MainFooter />
