@@ -74,7 +74,7 @@ export default defineConfig({
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
-    command: 'npm run start',//'npm run dev',
+    command: 'npm run dev',
     port: 3000,
 		timeout: 110 * 1000,
 		//url: 'http://localhost:3000',
